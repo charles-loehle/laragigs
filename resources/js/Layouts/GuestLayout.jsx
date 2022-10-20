@@ -2,14 +2,19 @@ import React from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import { Link } from "@inertiajs/inertia-react";
 
-export default function Guest({ children }) {
+export default function Guest({ children, url }) {
     return (
         <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <Link
-                    className="underline text-sm text-gray-600 hover:text-gray-900"
+                    className="underline text-sm text-red-500 hover:text-red-600"
                     href="/"
                 >
+                    <img
+                        className="w-24 mb-2"
+                        src={`${url}/storage/images/logo.png`}
+                        alt="logo"
+                    />
                     Back to Listings
                 </Link>
             </div>

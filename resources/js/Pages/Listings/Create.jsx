@@ -1,6 +1,6 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Link, Head, useForm } from "@inertiajs/inertia-react";
+import { Link, Head, useForm, usePage } from "@inertiajs/inertia-react";
 
 const Create = (props) => {
     const { data, setData, post, processing, errors, progress } = useForm({
@@ -13,6 +13,9 @@ const Create = (props) => {
         description: "",
         logo: null,
     });
+    const { url: ziggyUrl } = usePage().props.ziggy;
+
+    //console.log(data);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -20,11 +23,12 @@ const Create = (props) => {
     }
     return (
         <AuthenticatedLayout
+            ziggyUrl={ziggyUrl}
             auth={props.auth}
             errors={props.errors}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Dashboard
+                    Create Listing
                 </h2>
             }
         >
@@ -34,14 +38,17 @@ const Create = (props) => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
-                            <div className="pb-4">
+                            <h1 className="mb-8 text-3xl font-bold">
+                                Create Listing
+                            </h1>
+                            {/* <div className="pb-4">
                                 <Link
-                                    className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    href="/"
+                                    className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                                    href="/dashboard"
                                 >
-                                    Back To All LIstings
+                                    Manage Listings
                                 </Link>
-                            </div>
+                            </div> */}
                             <form
                                 onSubmit={handleSubmit}
                                 className="max-w-md mx-auto mt-8"
@@ -59,7 +66,8 @@ const Create = (props) => {
                                         onChange={(e) =>
                                             setData("company", e.target.value)
                                         }
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="company"
                                     />
                                     {errors.company && (
@@ -79,7 +87,8 @@ const Create = (props) => {
                                         onChange={(e) =>
                                             setData("title", e.target.value)
                                         }
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="title"
                                     />
                                     {errors.title && (
@@ -99,7 +108,8 @@ const Create = (props) => {
                                         onChange={(e) =>
                                             setData("location", e.target.value)
                                         }
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="location"
                                     />
                                     {errors.location && (
@@ -119,7 +129,8 @@ const Create = (props) => {
                                         onChange={(e) =>
                                             setData("website", e.target.value)
                                         }
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="website"
                                     />
                                     {errors.website && (
@@ -139,7 +150,8 @@ const Create = (props) => {
                                         onChange={(e) =>
                                             setData("email", e.target.value)
                                         }
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="email"
                                     />
                                     {errors.email && (
@@ -159,7 +171,8 @@ const Create = (props) => {
                                         onChange={(e) =>
                                             setData("tags", e.target.value)
                                         }
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="tags"
                                     />
                                     {errors.tags && (
@@ -179,7 +192,8 @@ const Create = (props) => {
                                         onChange={(e) =>
                                             setData("logo", e.target.files[0])
                                         }
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="logo"
                                     />
                                     {progress && (
@@ -202,7 +216,8 @@ const Create = (props) => {
                                         Job Description
                                     </label>
                                     <textarea
-                                        className="border border-gray-400 p-2 w-full"
+                                        className="border border-gray-400 p-2 w-full
+                                        focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         name="description"
                                         value={data.description}
                                         onChange={(e) =>
@@ -221,7 +236,7 @@ const Create = (props) => {
                                     )}
                                     <div className="mb-6 mt-6">
                                         <button
-                                            className="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500"
+                                            className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                                             disabled={processing}
                                         >
                                             Submit

@@ -10,37 +10,21 @@ use Illuminate\Support\Facades\Route;
 class ListingController extends Controller
 {
   public function index(Request $request) {
-    return Inertia::render('Welcome', [
-      'canLogin' => Route::has('login'),
-      'canRegister' => Route::has('register'),
-      // 'logos' => Listing::all()->map(function($logo){
-      //   return [
-      //     'logo' => asset('storage/' . $logo->logo),
-      //   ];
-      // }),
-      // 'listings' => Listing::all()->map(function ($listing) {
-      //   return [
-      //     'company' => $listing->company,
-      //     'description' => $listing->description,
-      //     'email' => $listing->email,
-      //     'id' => $listing->id,
-      //     'location' => $listing->location,
-      //     'logo' => $listing->logo,
-      //     'tags' => $listing->tags,
-      //     'company' => $listing->company,
-      //     'title' => $listing->title,
-      //     'website' => $listing->website,
-      //   ];
-      // })
-      'listings' => Listing::query()
+    $query = Listing::query()
       ->when($request->input('search'), function ($query, $search) {
         $query->where('title', 'like', '%' . $search . '%');
       })
       ->when($request->input('tag'), function ($query, $tag) {
         $query->where('tags', 'like', '%' . $tag . '%');
       })
+      ->latest()
       ->paginate(6)
-      ->withQueryString()
+      ->withQueryString();
+
+    return Inertia::render('Welcome', [
+      'canLogin' => Route::has('login'),
+      'canRegister' => Route::has('register'),
+      'listings' => $query
     ]);
   }
 
@@ -60,6 +44,7 @@ class ListingController extends Controller
 
   // store new listing 
   public function store(Request $request) {
+    //dd(auth()->id());
     //dd($request->file('logo'));
     $attributes = $request->validate([
       'title' => 'required',
@@ -77,10 +62,14 @@ class ListingController extends Controller
       $attributes['logo'] = $request->file('logo')->store('logos', 'public');
     }
 
+    // add user ownership to new listing 
+    $attributes['user_id'] = auth()->id();
+
+    //dd($attributes);
+
     Listing::create($attributes);
 
     return redirect('/')->with('message', 'New listing created successfully!');
-    
   }
 
   public function edit(Listing $listing) {
@@ -90,6 +79,7 @@ class ListingController extends Controller
   }
 
   public function update(Request $request, Listing $listing) {
+    //dd($request);
     $attributes = $request->validate([
       'title' => 'required',
       'company' => 'required',
@@ -99,6 +89,12 @@ class ListingController extends Controller
       'tags' => 'required',
       'description' => 'required',
     ]);
+
+    //dd($attributes);
+
+    if($request->hasFile('logo')) {
+      $attributes['logo'] = $request->file('logo')->store('logos', 'public');
+    }
 
     $listing->update($attributes);
 

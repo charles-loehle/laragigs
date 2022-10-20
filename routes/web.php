@@ -8,7 +8,9 @@ use App\Http\Controllers\ListingController;
 Route::get('/', [ListingController::class, 'index']);
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        'listings' => auth()->user()->listings()->get()
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // create listing form 
@@ -21,7 +23,7 @@ Route::post('/listings/create', [ListingController::class, 'store'])->middleware
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware(['auth', 'verified']);
 
 // update listing 
-Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware(['auth', 'verified']);
+Route::post('/listings/{listing}', [ListingController::class, 'update'])->middleware(['auth', 'verified']);
 
 // Single Listing 
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
