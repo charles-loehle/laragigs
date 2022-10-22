@@ -86,13 +86,13 @@ const Show = (props) => {
                 )}
             </nav> */}
             <Navbar props={props} />
-            <div className="Show max-w-5xl mx-4 flex justify-center">
-                <div>
+            <div className="Show flex justify-center mx-4">
+                <div className="p-6">
                     <Card listing={listing} />
-                    <div className="Show-links sm:flex justify-between">
+                    <div className="Show-links pb-6 md:flex justify-between md:space-x-4">
                         <a
                             href={`mailto:${listing.email}`}
-                            className="block sm:inline sm:w-1/2 sm:mr-4 text-center bg-red-600 text-white mt-6 py-2 px-5 rounded-xl hover:opacity-80"
+                            className="block md:w-1/2 text-center bg-laravelRed text-white mt-3 py-2 px-5 rounded-xl hover:opacity-80"
                         >
                             <FontAwesomeIcon
                                 className="text-white mr-2"
@@ -102,7 +102,7 @@ const Show = (props) => {
                         </a>
                         <a
                             href={listing.website}
-                            className="block sm:inline sm:w-1/2 text-center bg-black text-white mt-6 py-2 px-5  rounded-xl hover:opacity-80"
+                            className="block md:w-1/2 text-center bg-black text-white mt-3 py-2 px-5  rounded-xl hover:opacity-80"
                         >
                             <FontAwesomeIcon
                                 className="text-white mr-2"
@@ -114,11 +114,11 @@ const Show = (props) => {
                 </div>
             </div>
 
-            <footer className="w-full flex items-center justify-start font-bold bg-red-500 text-white h-24 mt-24 opacity-90 md:justify-center">
+            {/* <footer className="w-full flex items-center justify-start font-bold bg-red-500 text-white h-24 mt-24 opacity-90 md:justify-center">
                 <p className="text-black ml-2">
                     Copyright &copy; 2022, All Rights reserved
                 </p>
-            </footer>
+            </footer> */}
         </>
     );
 };

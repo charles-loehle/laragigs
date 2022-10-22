@@ -139,7 +139,7 @@ export default function Welcome(props) {
                 </nav> */}
                 <Navbar props={props} />
 
-                <section className="hero p-4 relative sm:h-72 bg-red-400 flex flex-col justify-center align-center text-center space-y-4 mb-4">
+                <section className="hero p-4 relative sm:h-72 bg-laravelRed flex flex-col justify-center align-center text-center space-y-4 mb-4">
                     <div
                         className="absolute top-0 left-0 w-full h-full opacity-10 bg-no-repeat bg-center"
                         style={{
@@ -173,7 +173,7 @@ export default function Welcome(props) {
                             onChange={handleChange}
                         />
                         <button
-                            className="mt-4 sm:mt-0 h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600"
+                            className="mt-4 sm:mt-0 h-10 w-20 text-white rounded-lg bg-laravelRed hover:bg-red-600"
                             onClick={resetSearch}
                         >
                             Reset

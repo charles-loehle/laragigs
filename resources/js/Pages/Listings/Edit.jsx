@@ -54,12 +54,12 @@ const Edit = (props) => {
             <Head title="Edit" />
 
             <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="max-w-2xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
-                            <h1 className="mb-8 text-3xl font-bold">
+                            {/* <h1 className="mb-8 text-3xl font-bold">
                                 Edit Listing
-                            </h1>
+                            </h1> */}
                             {/* <div className="pb-4">
                                 <Link
                                     className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
@@ -254,7 +254,7 @@ const Edit = (props) => {
                                     )}
                                     <div className="mb-6 mt-6 flex justify-between">
                                         <button
-                                            className="text-red-600 focus:outline-none hover:underline"
+                                            className="text-laravelRed focus:outline-none hover:underline"
                                             tabIndex="-1"
                                             type="button"
                                             onClick={onDelete}
@@ -262,7 +262,7 @@ const Edit = (props) => {
                                             Delete Listing
                                         </button>
                                         <button
-                                            className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                                            className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-laravelRed focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                                             disabled={processing}
                                         >
                                             Update Listing

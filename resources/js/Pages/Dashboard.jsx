@@ -22,14 +22,18 @@ export default function Dashboard(props) {
 
             <div className="py-12 px-4">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <h1 className="mb-8 text-3xl font-bold">Listings</h1>
-                    <div className="mb-6">
-                        <Link
-                            href="/listings/create"
-                            className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-                        >
-                            Create Listing
-                        </Link>
+                    <div className="flex">
+                        <h1 className="mb-8 mr-4 text-3xl font-bold">
+                            Listings
+                        </h1>
+                        <div className="mb-6">
+                            <Link
+                                href="/listings/create"
+                                className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-laravelRed focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                            >
+                                Create Listing
+                            </Link>
+                        </div>
                     </div>
                     <div className="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="overflow-x-auto p-6 bg-white border-b border-gray-200">
