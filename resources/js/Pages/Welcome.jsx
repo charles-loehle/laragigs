@@ -69,7 +69,7 @@ export default function Welcome(props) {
 
     return (
         <>
-            <Head title="Welcome" />
+            <Head title="Welcome test 123" />
             <div className="min-h-screen sm:items-center sm:pt-0">
                 {/* <nav className="px-6 py-4 sm:block">
                     {props.auth.user ? (
